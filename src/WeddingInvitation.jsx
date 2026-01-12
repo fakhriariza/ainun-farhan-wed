@@ -11,6 +11,7 @@ import cover from "./assets/cover.jpeg";
 import bgVideo from "./assets/bg_video.mp4";
 import story from "./assets/story.jpg";
 import coverDesktop from "./assets/cover-desktop.jpg";
+import weddingMusic from "./assets/wedding-music.mp3"; // Import musik
 
 //galery
 import gal1 from "./galery/gal1.jpg";
@@ -66,6 +67,7 @@ const WeddingInvitation = () => {
   const [showGiftModal, setShowGiftModal] = useState(false);
   const [copied, setCopied] = useState("");
   const [galleryIndex, setGalleryIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false); // State untuk musik
 
   // Refs
   const containerRef = useRef(null);
@@ -170,10 +172,38 @@ const WeddingInvitation = () => {
     return () => observer.disconnect();
   }, [isOpen]);
 
-  // Handlers
+  // ==========================================
+  // MUSIC HANDLERS
+  // ==========================================
   const handleOpen = () => {
     setIsOpen(true);
-    audioRef.current?.play().catch(() => {});
+    // Auto play musik saat buka undangan
+    setTimeout(() => {
+      if (audioRef.current) {
+        audioRef.current.volume = 0.5; // Set volume 50%
+        audioRef.current
+          .play()
+          .then(() => setIsPlaying(true))
+          .catch((err) => {
+            console.log("Autoplay prevented:", err);
+            setIsPlaying(false);
+          });
+      }
+    }, 100);
+  };
+
+  const toggleMusic = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        audioRef.current
+          .play()
+          .then(() => setIsPlaying(true))
+          .catch((err) => console.log("Play error:", err));
+      }
+    }
   };
 
   const scrollToPage = (page) => {
@@ -341,9 +371,37 @@ const WeddingInvitation = () => {
 
       {/* Invitation Container */}
       <div className="h-screen w-full max-w-md relative overflow-hidden bg-black z-10">
-        <audio ref={audioRef} loop>
-          <source src="/wedding-music.mp3" type="audio/mpeg" />
+        {/* Audio Element */}
+        <audio ref={audioRef} loop preload="auto">
+          <source src={weddingMusic} type="audio/mpeg" />
         </audio>
+
+        {/* Music Control Button */}
+        <button
+          onClick={toggleMusic}
+          className="fixed bottom-6 right-6 z-50 w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/30 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all"
+          aria-label={isPlaying ? "Pause music" : "Play music"}
+        >
+          {isPlaying ? (
+            // Pause Icon dengan animasi
+            <div className="relative">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+              </svg>
+              {/* Music wave animation */}
+              <span className="absolute -top-1 -right-1 w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+            </div>
+          ) : (
+            // Play Icon
+            <svg
+              className="w-5 h-5 ml-0.5"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          )}
+        </button>
 
         {/* Hamburger Menu */}
         <button
