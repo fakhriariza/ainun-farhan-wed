@@ -156,6 +156,8 @@ export const Pages5to12 = ({
   setWishData,
   wishes,
   submitWish,
+  isLoading,
+  isSubmitting,
   showGiftModal,
   setShowGiftModal,
   copied,
@@ -193,19 +195,19 @@ export const Pages5to12 = ({
           {[
             {
               year: "First Meet",
-              text: "Pada tahun 2018, kami bertemu di Fakultas Hukum UPN Veteran Jakarta pada organisasi Unit Peradilan Semu sebagai Kakak Tingkat dan Adik Tingkat. Kemudian karena terdapat kecocokan, hubungan berlanjut semakin dekat dan kami mulai berpacaran pada 13 November 2018. ",
+              text: "Pada tahun 2018, kami bertemu di Fakultas Hukum UPN Veteran Jakarta pada organisasi Unit Peradilan Semu sebagai Kakak Tingkat dan Adik Tingkat.",
             },
             {
               year: "Konflik",
-              text: "Pada tahun 2022 kami memutuskan untuk berpisah karena perbedaan pendapat dan komunikasi serta faktor LDR. Namun dari perpisahan tersebut membentuk diri kami menjadi lebih baik dan pada awal tahun 2023 kami mencoba untuk menjalani kembali hubungan asmara.",
+              text: "Pada tahun 2022 kami memutuskan untuk berpisah karena perbedaan pendapat dan komunikasi serta faktor LDR. Namun pada awal 2023 kami mencoba menjalani kembali hubungan.",
             },
             {
               year: "Engagement",
-              text: "Lika liku hubungan yang kami jalani baik konflik, susah, senang dan LDR membentuk hubungan kami menjadi lebih dewasa dan memantapkan diri masing-masing. Sehingga pada tanggal 13 Juli 2025, kami bertunangan setelah 7 tahun menjalin asmara. Tunangan ini menjadi simbol komitmen kami dalam membangun masa depan bersama.",
+              text: "Pada tanggal 13 Juli 2025, kami bertunangan setelah 7 tahun menjalin asmara. Tunangan ini menjadi simbol komitmen kami dalam membangun masa depan bersama.",
             },
             {
               year: "Marriage",
-              text: "Pada tanggal 1 Februari 2026 kami memutuskan untuk menikah. Pernikahan ini menjadi bukti tantangan apapun yang akan dihadapi, dapat diatasi bersama dengan komitmen dan kepercayaan. Proses hubungan asmara kami yang selama 7 tahun, membentuk pribadi kami menjadi lebih dewasa dan siap menjalani kehidupan pernikahan bersama.",
+              text: "Pada tanggal 1 Februari 2026 kami memutuskan untuk menikah. Proses hubungan asmara kami yang selama 7 tahun, membentuk pribadi kami menjadi lebih dewasa.",
             },
           ].map((item, i) => (
             <div key={i}>
@@ -304,7 +306,7 @@ export const Pages5to12 = ({
       </div>
     </section>
 
-    {/* Page 8: RSVP */}
+    {/* Page 8: RSVP - FORM INPUT */}
     <section
       ref={(el) => (sectionRefs.current[7] = el)}
       className="h-screen w-full relative snap-start snap-always"
@@ -319,11 +321,12 @@ export const Pages5to12 = ({
           berkenan hadir untuk memberikan do'a restu.
         </p>
 
+        {/* Step Indicator */}
         <div className="flex items-center justify-center gap-2 mb-6">
           {[1, 2, 3, 4].map((step) => (
             <React.Fragment key={step}>
               <div
-                className={`w-8 h-8 rounded-full flex items-center justify-center text-xs ${
+                className={`w-8 h-8 rounded-full flex items-center justify-center text-xs transition-all ${
                   wishStep >= step
                     ? "bg-white/90 text-black"
                     : "border border-white/40"
@@ -336,11 +339,12 @@ export const Pages5to12 = ({
           ))}
         </div>
 
+        {/* Form Steps */}
         <div className="flex-1 flex flex-col justify-center">
           {wishStep === 1 && (
             <div>
               <label className="text-xs tracking-wider opacity-70 block mb-2">
-                NAME
+                NAMA
               </label>
               <input
                 type="text"
@@ -353,6 +357,7 @@ export const Pages5to12 = ({
               />
             </div>
           )}
+
           {wishStep === 2 && (
             <div>
               <label className="text-xs tracking-wider opacity-70 block mb-4">
@@ -365,10 +370,10 @@ export const Pages5to12 = ({
                     onClick={() =>
                       setWishData({ ...wishData, attendance: opt })
                     }
-                    className={`w-full py-3 border text-sm ${
+                    className={`w-full py-3 border text-sm transition-all ${
                       wishData.attendance === opt
                         ? "border-white bg-white/10"
-                        : "border-white/40"
+                        : "border-white/40 hover:border-white/60"
                     }`}
                   >
                     {opt}
@@ -377,6 +382,7 @@ export const Pages5to12 = ({
               </div>
             </div>
           )}
+
           {wishStep === 3 && (
             <div>
               <label className="text-xs tracking-wider opacity-70 block mb-4">
@@ -390,7 +396,7 @@ export const Pages5to12 = ({
                       guests: Math.max(1, wishData.guests - 1),
                     })
                   }
-                  className="w-12 h-12 border border-white/40 flex items-center justify-center text-xl"
+                  className="w-12 h-12 border border-white/40 flex items-center justify-center text-xl hover:bg-white/10"
                 >
                   −
                 </button>
@@ -404,13 +410,14 @@ export const Pages5to12 = ({
                       guests: Math.min(5, wishData.guests + 1),
                     })
                   }
-                  className="w-12 h-12 border border-white/40 flex items-center justify-center text-xl"
+                  className="w-12 h-12 border border-white/40 flex items-center justify-center text-xl hover:bg-white/10"
                 >
                   +
                 </button>
               </div>
             </div>
           )}
+
           {wishStep === 4 && (
             <div>
               <label className="text-xs tracking-wider opacity-70 block mb-2">
@@ -421,37 +428,64 @@ export const Pages5to12 = ({
                 onChange={(e) =>
                   setWishData({ ...wishData, message: e.target.value })
                 }
-                className="w-full bg-transparent border border-white/40 p-3 text-white outline-none h-28 resize-none"
-                placeholder="Tulis ucapan dan doa..."
+                className="w-full bg-transparent border border-white/40 p-3 text-white outline-none h-28 resize-none focus:border-white"
+                placeholder="Tulis ucapan dan doa untuk kedua mempelai..."
               />
             </div>
           )}
         </div>
 
+        {/* Navigation Buttons */}
         <div className="flex gap-3">
           {wishStep > 1 && (
             <button
               onClick={() => setWishStep(wishStep - 1)}
-              className="flex-1 border border-white/40 py-4 text-xs tracking-wider hover:bg-white/10"
+              disabled={isSubmitting}
+              className="flex-1 border border-white/40 py-4 text-xs tracking-wider hover:bg-white/10 disabled:opacity-50"
             >
-              BACK
+              KEMBALI
             </button>
           )}
           <button
             onClick={() =>
               wishStep < 4 ? setWishStep(wishStep + 1) : submitWish()
             }
-            className={`flex-1 bg-white/90 text-black py-4 text-xs tracking-wider hover:bg-white ${
+            disabled={isSubmitting || (wishStep === 1 && !wishData.name)}
+            className={`flex-1 bg-white/90 text-black py-4 text-xs tracking-wider hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed ${
               wishStep === 1 ? "w-full" : ""
             }`}
           >
-            {wishStep < 4 ? "NEXT" : "KIRIM"}
+            {isSubmitting ? (
+              <span className="flex items-center justify-center gap-2">
+                <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24">
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    fill="none"
+                  />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  />
+                </svg>
+                MENGIRIM...
+              </span>
+            ) : wishStep < 4 ? (
+              "LANJUT"
+            ) : (
+              "KIRIM"
+            )}
           </button>
         </div>
       </div>
     </section>
 
-    {/* Page 9: Wishes */}
+    {/* Page 9: Wishes - DISPLAY DATA */}
     <section
       ref={(el) => (sectionRefs.current[8] = el)}
       className="h-screen w-full relative snap-start snap-always"
@@ -466,7 +500,7 @@ export const Pages5to12 = ({
             onClick={() => scrollToPage(8)}
             className="text-xs tracking-wider flex items-center gap-2 opacity-70 hover:opacity-100"
           >
-            ADD{" "}
+            TAMBAH
             <svg
               className="w-4 h-4"
               fill="none"
@@ -482,112 +516,84 @@ export const Pages5to12 = ({
             </svg>
           </button>
         </div>
-        <div className="flex-1 overflow-y-auto space-y-6 pr-2">
-          {wishes.map((wish, i) => (
-            <div key={i} className={i % 2 === 0 ? "text-left" : "text-right"}>
-              <h3 className="text-lg italic mb-1" style={fontSerif}>
-                {wish.name}
-              </h3>
-              <p className="text-sm opacity-80 leading-relaxed mb-1">
-                {wish.message}
-              </p>
-              <p className="text-xs opacity-50">{wish.date}</p>
+
+        {/* Loading State */}
+        {isLoading ? (
+          <div className="flex-1 flex items-center justify-center">
+            <div className="text-center">
+              <svg
+                className="animate-spin w-8 h-8 mx-auto mb-4 text-white/60"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                  fill="none"
+                />
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                />
+              </svg>
+              <p className="text-sm opacity-60">Memuat ucapan...</p>
             </div>
-          ))}
-        </div>
+          </div>
+        ) : wishes.length === 0 ? (
+          <div className="flex-1 flex items-center justify-center">
+            <div className="text-center">
+              <p className="text-lg opacity-60 mb-2">Belum ada ucapan</p>
+              <p className="text-sm opacity-40">
+                Jadilah yang pertama memberikan ucapan!
+              </p>
+            </div>
+          </div>
+        ) : (
+          <div className="flex-1 overflow-y-auto space-y-6 pr-2">
+            {wishes.map((wish, i) => (
+              <div
+                key={wish.id || i}
+                className={`${
+                  i % 2 === 0 ? "text-left" : "text-right"
+                } animate-fade-in`}
+              >
+                <h3 className="text-lg italic mb-1" style={fontSerif}>
+                  {wish.name}
+                </h3>
+                <p className="text-sm opacity-80 leading-relaxed mb-1">
+                  {wish.message}
+                </p>
+                <p className="text-xs opacity-50">{wish.date}</p>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Wishes Count */}
+        {!isLoading && wishes.length > 0 && (
+          <div className="text-center pt-4 border-t border-white/10 mt-4">
+            <p className="text-xs opacity-50">{wishes.length} ucapan</p>
+          </div>
+        )}
       </div>
     </section>
 
     {/* Page 10: Wedding Gift */}
     <section
-      ref={(el) => (sectionRefs.current[9] = el)}
-      className="h-screen w-full relative snap-start snap-always"
-    >
-      <div className="absolute inset-0 bg-black/50" />
-      <div className="relative z-10 h-full flex flex-col justify-center text-white px-8">
-        <h2 className="text-3xl italic mb-6" style={fontSerif}>
-          WEDDING GIFT
-        </h2>
-        <p className="text-sm opacity-80 leading-relaxed mb-8">
-          Bagi yang ingin memberikan tanda kasih, dapat mengirimkan melalui
-          fitur di bawah ini:
-        </p>
-        <button
-          onClick={() => setShowGiftModal(true)}
-          className="border border-white/40 px-8 py-3 text-xs tracking-wider hover:bg-white/10 w-fit"
-        >
-          KLIK DISINI
-        </button>
-      </div>
-      {showGiftModal && (
-        <div className="absolute inset-0 bg-black/80 flex items-center justify-center z-50 p-8">
-          <div className="bg-zinc-900 w-full max-w-sm p-6 relative animate-fade-in">
-            <button
-              onClick={() => setShowGiftModal(false)}
-              className="absolute top-4 right-4 text-white/60 hover:text-white"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-            <h3 className="text-xl text-white mb-6" style={fontSerif}>
-              Wedding Gift
-            </h3>
-            <div className="space-y-4">
-              {[
-                {
-                  bank: "Bank BCA",
-                  name: "a.n. Farhan Taufiqul H.",
-                  no: "1234567890",
-                  key: "bca",
-                },
-                {
-                  bank: "Bank Mandiri",
-                  name: "a.n. Ainun Sekar A.P.",
-                  no: "0987654321",
-                  key: "mandiri",
-                },
-              ].map((b) => (
-                <div key={b.key} className="border border-white/20 p-4">
-                  <p className="text-xs text-white/60 mb-1">{b.bank}</p>
-                  <p className="text-white mb-1">{b.name}</p>
-                  <div className="flex items-center justify-between">
-                    <p className="font-mono text-white">{b.no}</p>
-                    <button
-                      onClick={() => copyToClipboard(b.no, b.key)}
-                      className="text-xs text-white/60 hover:text-white"
-                    >
-                      {copied === b.key ? "✓ Copied!" : "Copy"}
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-    </section>
-
-    {/* Page 11: Gallery */}
-    <section
       ref={(el) => (sectionRefs.current[10] = el)}
       className="h-screen w-full relative snap-start snap-always"
     >
-      <div className="absolute inset-0 bg-black/30" />
+      {/* Background foto full - menutupi video */}
       <div
-        className="absolute inset-0 bg-cover bg-center transition-all duration-500 opacity-50"
+        className="absolute inset-0 bg-cover bg-center transition-all duration-500"
         style={{ backgroundImage: `url(${images.gallery[galleryIndex]})` }}
-      />
+      >
+        <div className="absolute inset-0 bg-black/30" />
+      </div>
       <div className="relative z-10 h-full flex flex-col justify-end text-white px-8 pb-16">
         <div className="flex items-center justify-between mb-4">
           <button
