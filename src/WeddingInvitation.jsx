@@ -301,7 +301,7 @@ const WeddingInvitation = () => {
   // ==========================================
   if (!isOpen) {
     return (
-      <div className="min-h-screen w-200 flex bg-black relative">
+      <div className="min-h-screen w-full flex bg-black relative">
         {/* Desktop Background - Hidden on mobile */}
         <div
           className="hidden md:block fixed inset-0 z-0"
