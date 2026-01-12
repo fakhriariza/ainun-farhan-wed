@@ -8,6 +8,7 @@ import doa from "./assets/doa.jpeg";
 import cover from "./assets/cover.jpeg";
 import bgVideo from "./assets/bg_video.mp4";
 import story from "./assets/story.jpg";
+//sip
 
 const WeddingInvitation = () => {
   // States
