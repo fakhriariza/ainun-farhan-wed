@@ -192,24 +192,20 @@ export const Pages5to12 = ({
         <div className="space-y-6 text-sm flex-1 overflow-y-auto">
           {[
             {
-              year: "2011 – 2023",
-              text: "Pertama kali berjumpa di bangku MTs, kami hanyalah dua teman biasa. Takdir mempertemukan kami kembali di SMA yang sama, lalu berlanjut ke perguruan tinggi, bahkan bekerja di instansi yang sama.",
+              year: "First Meet",
+              text: "Pada tahun 2018, kami bertemu di Fakultas Hukum UPN Veteran Jakarta pada organisasi Unit Peradilan Semu sebagai Kakak Tingkat dan Adik Tingkat. Kemudian karena terdapat kecocokan, hubungan berlanjut semakin dekat dan kami mulai berpacaran pada 13 November 2018. ",
             },
             {
-              year: "November 2023",
-              text: "Tanpa diduga, langkah kami mulai berpadu dalam irama yang sama. Komunikasi menjadi lebih hangat, kebersamaan terasa lebih dekat. Dari sekadar teman, perlahan tumbuh rasa.",
+              year: "Konflik",
+              text: "Pada tahun 2022 kami memutuskan untuk berpisah karena perbedaan pendapat dan komunikasi serta faktor LDR. Namun dari perpisahan tersebut membentuk diri kami menjadi lebih baik dan pada awal tahun 2023 kami mencoba untuk menjalani kembali hubungan asmara.",
             },
             {
-              year: "November 2024",
-              text: "Satu tahun berlalu dengan penuh cerita dan komitmen. Pada tanggal 30 November 2024, ia menyatakan niat suci—melamarku untuk menjadi pendamping hidupnya.",
+              year: "Engagement",
+              text: "Lika liku hubungan yang kami jalani baik konflik, susah, senang dan LDR membentuk hubungan kami menjadi lebih dewasa dan memantapkan diri masing-masing. Sehingga pada tanggal 13 Juli 2025, kami bertunangan setelah 7 tahun menjalin asmara. Tunangan ini menjadi simbol komitmen kami dalam membangun masa depan bersama.",
             },
             {
-              year: "Februari 2025",
-              text: "Langkah kami semakin mantap. Pertemuan dua keluarga menjadi saksi niat baik dan restu yang kami harapkan.",
-            },
-            {
-              year: "Februari 2026",
-              text: "Kini, kami bersiap untuk menapaki babak baru sebagai suami istri. Perjalanan ini telah menjadi anugerah yang penuh makna.",
+              year: "Marriage",
+              text: "Pada tanggal 1 Februari 2026 kami memutuskan untuk menikah. Pernikahan ini menjadi bukti tantangan apapun yang akan dihadapi, dapat diatasi bersama dengan komitmen dan kepercayaan. Proses hubungan asmara kami yang selama 7 tahun, membentuk pribadi kami menjadi lebih dewasa dan siap menjalani kehidupan pernikahan bersama.",
             },
           ].map((item, i) => (
             <div key={i}>
