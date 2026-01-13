@@ -45,6 +45,8 @@ const WeddingInvitation = () => {
   const guestName = getGuestName(slug);
 
   // States
+  const [assetsLoaded, setAssetsLoaded] = useState(false); // Loading state
+  const [loadingProgress, setLoadingProgress] = useState(0); // Progress 0-100
   const [isOpen, setIsOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -72,6 +74,7 @@ const WeddingInvitation = () => {
   // Refs
   const containerRef = useRef(null);
   const audioRef = useRef(null);
+  const videoRef = useRef(null); // Ref untuk preload video
   const sectionRefs = useRef([]);
 
   // Constants
@@ -125,6 +128,91 @@ const WeddingInvitation = () => {
       setWishData((prev) => ({ ...prev, name: guestName }));
     }
   }, [guestName]);
+
+  // ==========================================
+  // PRELOAD ALL ASSETS
+  // ==========================================
+  useEffect(() => {
+    const imagesToLoad = [
+      cover,
+      coverDesktop,
+      brides,
+      grooms,
+      doa,
+      story,
+      gal1,
+      gal2,
+      gal3,
+      gal4,
+      gal5,
+      gal6,
+      gal7,
+      gal8,
+      gal9,
+      gal10,
+      gal11,
+    ];
+
+    let loadedCount = 0;
+    const totalAssets = imagesToLoad.length + 1; // +1 untuk video
+
+    // Preload images
+    const preloadImage = (src) => {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => {
+          loadedCount++;
+          setLoadingProgress(Math.round((loadedCount / totalAssets) * 100));
+          resolve();
+        };
+        img.onerror = () => {
+          loadedCount++;
+          setLoadingProgress(Math.round((loadedCount / totalAssets) * 100));
+          resolve(); // Resolve anyway to not block
+        };
+        img.src = src;
+      });
+    };
+
+    // Preload video
+    const preloadVideo = () => {
+      return new Promise((resolve) => {
+        const video = document.createElement("video");
+        video.preload = "auto";
+        video.oncanplaythrough = () => {
+          loadedCount++;
+          setLoadingProgress(Math.round((loadedCount / totalAssets) * 100));
+          resolve();
+        };
+        video.onerror = () => {
+          loadedCount++;
+          setLoadingProgress(Math.round((loadedCount / totalAssets) * 100));
+          resolve();
+        };
+        // Timeout fallback - don't wait forever for video
+        setTimeout(() => {
+          if (loadedCount < totalAssets) {
+            loadedCount++;
+            setLoadingProgress(Math.round((loadedCount / totalAssets) * 100));
+            resolve();
+          }
+        }, 10000); // 10 second timeout for video
+        video.src = bgVideo;
+      });
+    };
+
+    // Load all assets
+    const loadAllAssets = async () => {
+      await Promise.all([...imagesToLoad.map(preloadImage), preloadVideo()]);
+
+      // Small delay for smooth transition
+      setTimeout(() => {
+        setAssetsLoaded(true);
+      }, 500);
+    };
+
+    loadAllAssets();
+  }, []);
 
   // Firebase: Subscribe to wishes
   useEffect(() => {
@@ -297,11 +385,68 @@ const WeddingInvitation = () => {
   };
 
   // ==========================================
+  // LOADING SCREEN
+  // ==========================================
+  if (!assetsLoaded) {
+    return (
+      <div className="fixed inset-0 w-full h-full bg-black flex flex-col items-center justify-center z-50">
+        {/* Logo/Names */}
+        <div className="text-center mb-8">
+          <p className="text-xs tracking-widest mb-3 text-white/60">
+            THE WEDDING OF
+          </p>
+          <h1 className="text-3xl md:text-4xl text-white" style={fontSerif}>
+            AINUN & FARHAN
+          </h1>
+        </div>
+
+        {/* Loading Animation */}
+        <div className="w-48 mb-4">
+          {/* Progress Bar Background */}
+          <div className="h-0.5 bg-white/20 rounded-full overflow-hidden">
+            {/* Progress Bar Fill */}
+            <div
+              className="h-full bg-white/80 transition-all duration-300 ease-out"
+              style={{ width: `${loadingProgress}%` }}
+            />
+          </div>
+        </div>
+
+        {/* Loading Text */}
+        <p className="text-xs text-white/50 tracking-wider">
+          {loadingProgress < 100
+            ? `Loading ${loadingProgress}%`
+            : "Almost ready..."}
+        </p>
+
+        {/* Decorative Element */}
+        <div className="absolute bottom-12 text-white/30">
+          <svg
+            className="w-6 h-6 animate-pulse"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={1}
+              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+            />
+          </svg>
+        </div>
+
+        <style>{`@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');`}</style>
+      </div>
+    );
+  }
+
+  // ==========================================
   // OPENING COVER - dengan Guest Name
   // ==========================================
   if (!isOpen) {
     return (
-      <div className="min-h-screen w-full flex bg-black relative">
+      <div className="fixed inset-0 w-full h-full bg-black">
         {/* Desktop Background - Hidden on mobile */}
         <div
           className="hidden md:block fixed inset-0 z-0"
@@ -311,7 +456,7 @@ const WeddingInvitation = () => {
         </div>
 
         {/* Invitation Container */}
-        <div className="h-screen w-full max-w-md relative overflow-hidden z-10">
+        <div className="h-full w-full max-w-md relative overflow-hidden z-10 mx-auto md:mx-0">
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${images.cover})` }}
