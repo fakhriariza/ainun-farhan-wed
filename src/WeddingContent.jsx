@@ -669,16 +669,35 @@ export const Pages5to12 = ({
       className="h-screen w-full relative snap-start snap-always"
     >
       <div className="absolute inset-0 bg-black/50" />
-      <div className="relative z-10 h-full flex flex-col items-center justify-center text-white text-center px-8">
-        <p className="text-sm opacity-80 leading-relaxed mb-8 max-w-xs">
-          Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila
-          Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.
-        </p>
-        <p className="text-xs tracking-wider mb-4 opacity-60">TERIMA KASIH</p>
-        <h2 className="text-3xl mb-2" style={fontSerif}>
-          AINUN & FARHAN
-        </h2>
-        <p className="text-xs tracking-wider opacity-60">#AinunFarhan2026</p>
+      <div className="relative z-10 h-full flex flex-col text-white text-center px-8 py-12">
+        {/* Main Content - Centered */}
+        <div className="flex-1 flex flex-col items-center justify-center">
+          <p className="text-sm opacity-80 leading-relaxed mb-8 max-w-xs">
+            Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila
+            Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.
+          </p>
+          <p className="text-xs tracking-wider mb-4 opacity-60">TERIMA KASIH</p>
+          <h2 className="text-3xl mb-2" style={fontSerif}>
+            AINUN & FARHAN
+          </h2>
+          <p className="text-xs tracking-wider opacity-60">#AinunFarhan2026</p>
+        </div>
+
+        {/* Footer Credit - Bottom */}
+        <div className="pt-4">
+          <p className="text-[10px] tracking-wide opacity-40 text-white">
+            Made with ♥ <br />
+            exclusive for Ainun & Farhan by{" "}
+            <a
+              href="https://instagram.com/doa.selamanya"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-extrabold text-white opacity-100 hover:underline"
+            >
+              @doa.selamanya
+            </a>
+          </p>
+        </div>
       </div>
     </section>
   </div>

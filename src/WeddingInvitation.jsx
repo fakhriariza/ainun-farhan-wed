@@ -419,6 +419,10 @@ const WeddingInvitation = () => {
             : "Almost ready..."}
         </p>
 
+        <p className="text-xs tracking-widest mt-28 mb-3 text-white/60">
+          digital invitation by @doa.selamanya
+        </p>
+
         {/* Decorative Element */}
         <div className="absolute bottom-12 text-white/30">
           <svg
