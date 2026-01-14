@@ -131,9 +131,25 @@ export const Pages1to4 = ({
           </p>
           <span className="w-16 h-px bg-white/40" />
         </div>
-        <p className="text-sm opacity-70">
+        <p className="text-sm opacity-70 mb-4">
           Bapak Yudi Wahyudi dan Ibu Melly Miswati
         </p>
+        <a
+          href="https://www.instagram.com/taufiqulfarhan?igsh=dTR3ejNtZmVzc21v"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 text-white hover:opacity-80 transition-opacity"
+        >
+          <svg
+            className="w-3 h-3"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+          </svg>
+          <span className="text-sm">@taufiqulfarhan</span>
+        </a>
       </div>
     </section>
 
@@ -159,9 +175,25 @@ export const Pages1to4 = ({
           </p>
           <span className="w-16 h-px bg-white/40" />
         </div>
-        <p className="text-sm opacity-70">
+        <p className="text-sm opacity-70 mb-4">
           Bapak Arcturus Arijanto dan Ibu Erny Nandya Sukawati
         </p>
+        <a
+          href="https://www.instagram.com/ainunskr?igsh=bG0xd3JhdG90Nmx1"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 text-white hover:opacity-80 transition-opacity"
+        >
+          <svg
+            className="w-3 h-3"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+          </svg>
+          <span className="text-sm">@ainunskr</span>
+        </a>
       </div>
     </section>
   </>
@@ -295,7 +327,12 @@ export const Pages5to12 = ({
               </div>
             ))}
           </div>
-          <button className="border border-white/40 px-8 py-3 text-xs tracking-wider flex items-center gap-2 hover:bg-white/10">
+          <a
+            href={`https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+of+Ainun+%26+Farhan&dates=20260201T010000Z/20260201T060000Z&details=Akad+Nikah%3A+08.00+-+10.00+WIB%0AResepsi%3A+11.00+-+13.00+WIB%0A%0AUndangan+pernikahan+Ainun+Sekar+Arcturiani+Putri+dan+Farhan+Taufiqul+Hafidz&location=Griya+Ardhya+Garini%2C+Jl.+Halim+Perdanakusuma%2C+RT.1%2FRW.4%2C+Kec.+Makasar%2C+Jakarta+Timur&sf=true&output=xml`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-white/40 px-8 py-3 text-xs tracking-wider flex items-center gap-2 hover:bg-white/10 transition-all text-white"
+          >
             SAVE THE DATE
             <svg
               className="w-4 h-4"
@@ -310,7 +347,7 @@ export const Pages5to12 = ({
                 d="M17 8l4 4m0 0l-4 4m4-4H3"
               />
             </svg>
-          </button>
+          </a>
         </div>
       </section>
 
