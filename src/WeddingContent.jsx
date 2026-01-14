@@ -123,7 +123,7 @@ export const Pages1to4 = ({
       <div className="relative z-10 h-full flex flex-col justify-end text-white px-8 pb-24">
         <p className="text-xs tracking-widest mb-3 opacity-70">THE GROOM</p>
         <h2 className="text-3xl md:text-4xl mb-4" style={fontSerif}>
-          Farhan Taufiqul Hafidz
+          Farhan Taufiqul Hafidz, SH
         </h2>
         <div className="flex items-center gap-4 mb-3">
           <p className="text-sm italic opacity-80">
@@ -132,7 +132,7 @@ export const Pages1to4 = ({
           <span className="w-16 h-px bg-white/40" />
         </div>
         <p className="text-sm opacity-70">
-          Bapak Yudi Wahyudi dan Ibu Melly Mismawati
+          Bapak Yudi Wahyudi dan Ibu Melly Miswati
         </p>
       </div>
     </section>
@@ -151,7 +151,7 @@ export const Pages1to4 = ({
       <div className="relative z-10 h-full flex flex-col justify-end text-white px-8 pb-24">
         <p className="text-xs tracking-widest mb-3 opacity-70">THE BRIDE</p>
         <h2 className="text-3xl md:text-4xl mb-4" style={fontSerif}>
-          Ainun Sekar Arcturiani Putri
+          Ainun Sekar Arcturiani Putri, SH
         </h2>
         <div className="flex items-center gap-4 mb-3">
           <p className="text-sm italic opacity-80">
@@ -160,7 +160,7 @@ export const Pages1to4 = ({
           <span className="w-16 h-px bg-white/40" />
         </div>
         <p className="text-sm opacity-70">
-          Bapak Arcturus Arijanto & Ibu Erny Nandya Sukawati, S.Ars
+          Bapak Arcturus Arijanto dan Ibu Erny Nandya Sukawati
         </p>
       </div>
     </section>
