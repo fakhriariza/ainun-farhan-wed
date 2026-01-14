@@ -226,6 +226,7 @@ export const Pages5to12 = ({
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showFirst, setShowFirst] = useState(true);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     if (images.gallery && images.gallery.length > 0) {
@@ -240,7 +241,7 @@ export const Pages5to12 = ({
   return (
     <div className="relative">
       {/* VIDEO BACKGROUND KONTINYU - Full Screen */}
-      <div className="absolute inset-0 w-full" style={{ height: "800vh" }}>
+      <div className="absolute inset-0 w-full" style={{ height: "900vh" }}>
         <div className="sticky top-0 w-full h-screen overflow-hidden">
           <video
             autoPlay
@@ -293,7 +294,7 @@ export const Pages5to12 = ({
       </section>
 
       <section
-        ref={(el) => (sectionRefs.current[6] = el)}
+        ref={(el) => (sectionRefs.current[5] = el)}
         className="h-screen w-full relative snap-start snap-always"
       >
         <div className="absolute inset-0 bg-black/50" />
@@ -353,7 +354,7 @@ export const Pages5to12 = ({
 
       {/* Page 6: Venue */}
       <section
-        ref={(el) => (sectionRefs.current[5] = el)}
+        ref={(el) => (sectionRefs.current[6] = el)}
         className="h-screen w-full relative snap-start snap-always"
       >
         <div className="absolute inset-0 bg-black/50" />
@@ -670,99 +671,163 @@ export const Pages5to12 = ({
         </div>
       </section>
 
+      <section
+        ref={(el) => (sectionRefs.current[9] = el)}
+        className="h-screen w-full relative snap-start snap-always"
+      >
+        <div className="absolute inset-0 bg-cover bg-center">
+          <div className="absolute inset-0 bg-black/50" />
+        </div>
+        <div className="relative z-10 h-full flex flex-col justify-center text-white px-8">
+          <h2
+            className="font-serif text-3xl italic mb-6"
+            style={{ fontFamily: "Playfair Display, Georgia, serif" }}
+          >
+            WEDDING GIFT
+          </h2>
+
+          <p className="text-sm opacity-80 leading-relaxed mb-8">
+            Bagi yang ingin memberikan tanda kasih, dapat mengirimkan melalui
+            fitur di bawah ini:
+          </p>
+
+          <button
+            onClick={() => setShowGiftModal(true)}
+            className="border border-white/40 px-8 py-3 text-xs tracking-wider hover:bg-white/10 transition-colors w-fit"
+          >
+            KLIK DISINI
+          </button>
+        </div>
+
+        {/* Gift Modal */}
+        {showGiftModal && (
+          <div className="absolute inset-0 bg-black/80 flex items-center justify-center z-50 p-8">
+            <div className="bg-zinc-900 w-full max-w-sm p-6 relative animate-fade-in">
+              <button
+                onClick={() => setShowGiftModal(false)}
+                className="absolute top-4 right-4 text-white/60 hover:text-white transition-colors"
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+
+              <h3
+                className="font-serif text-xl text-white mb-6"
+                style={{ fontFamily: "Playfair Display, Georgia, serif" }}
+              >
+                Wedding Gift
+              </h3>
+
+              <div className="space-y-4">
+                <div className="border border-white/20 p-4">
+                  <p className="text-xs text-white/60 mb-1">Bank Jago</p>
+                  <p className="text-white mb-1">
+                    a.n. Ainun Sekar Arcturiani Putri
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <p className="font-mono text-white">105947123579</p>
+                    <button
+                      onClick={() => copyToClipboard("105947123579", "jago")}
+                      className="text-xs text-white/60 hover:text-white transition-colors"
+                    >
+                      {copied === "bca" ? "✓ Copied!" : "Copy"}
+                    </button>
+                  </div>
+                </div>
+
+                <div className="border border-white/20 p-4">
+                  <p className="text-xs text-white/60 mb-1">
+                    Bank Negara Indonesia
+                  </p>
+                  <p className="text-white mb-1">a.n. Farhan Taufiqul Hafidz</p>
+                  <div className="flex items-center justify-between">
+                    <p className="font-mono text-white">0452819195s</p>
+                    <button
+                      onClick={() => copyToClipboard("0452819195s", "bni")}
+                      className="text-xs text-white/60 hover:text-white transition-colors"
+                    >
+                      {copied === "mandiri" ? "✓ Copied!" : "Copy"}
+                    </button>
+                  </div>
+                </div>
+
+                {/* <div className="border border-white/20 p-4">
+                  <p className="text-xs text-white/60 mb-2">Kirim Kado</p>
+                  <p className="text-sm text-white/80">
+                    Jl. Cisadane Jl. Riam Kiri No.Gang, RT.01/RW.03, Bendo, Kec.
+                    Kepanjenkidul, Kota Blitar, Jawa Timur
+                  </p>
+                </div> */}
+              </div>
+            </div>
+          </div>
+        )}
+      </section>
+
       {/* Page 10: Wedding Gift */}
       <section
         ref={(el) => (sectionRefs.current[10] = el)}
-        className="h-screen w-full relative snap-start snap-always"
+        className="min-h-screen w-full relative snap-start snap-always py-16 px-6"
       >
-        {/* Background foto full - menutupi video dengan smooth transition */}
-        <div className="absolute inset-0">
-          {images.gallery.map((img, index) => (
-            <div
-              key={index}
-              className="absolute inset-0 bg-cover bg-center transition-opacity duration-700"
-              style={{
-                backgroundImage: `url(${img})`,
-                opacity: index === galleryIndex ? 1 : 0,
-              }}
-            >
-              <div className="absolute inset-0 bg-black/30" />
-            </div>
-          ))}
-        </div>
-        <div className="relative z-10 h-full flex flex-col justify-end text-white px-8 pb-16">
-          <div className="flex items-center justify-between mb-4">
-            <button
-              onClick={() =>
-                setGalleryIndex(
-                  galleryIndex > 0
-                    ? galleryIndex - 1
-                    : images.gallery.length - 1
-                )
-              }
-              className="text-white/60 hover:text-white p-2"
-            >
-              <svg
-                className="w-8 h-8"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-            </button>
-            <div className="text-center">
-              <h2 className="text-2xl" style={fontSerif}>
-                OUR GALLERY
-              </h2>
-              <p className="text-lg italic opacity-70" style={fontSerif}>
-                Ainun & Farhan
-              </p>
-            </div>
-            <button
-              onClick={() =>
-                setGalleryIndex(
-                  galleryIndex < images.gallery.length - 1
-                    ? galleryIndex + 1
-                    : 0
-                )
-              }
-              className="text-white/60 hover:text-white p-2"
-            >
-              <svg
-                className="w-8 h-8"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
+        <div className="absolute inset-0 bg-black/70" />
+
+        <div className="relative z-10 max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-12 text-white">
+            <h2 className="text-4xl mb-2" style={fontSerif}>
+              OUR GALLERY
+            </h2>
+            <p className="text-lg italic opacity-70" style={fontSerif}>
+              Ainun & Farhan
+            </p>
           </div>
-          <div className="flex justify-center gap-2">
-            {images.gallery.map((_, i) => (
-              <button
+
+          {/* Masonry-style Grid - Lebih Rapi */}
+          <div className="columns-2 md:columns-3 gap-4 space-y-4">
+            {images.gallery.map((img, i) => (
+              <div
                 key={i}
-                onClick={() => setGalleryIndex(i)}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  i === galleryIndex ? "bg-white w-4" : "bg-white/30"
-                }`}
-              />
+                onClick={() => setSelectedImage(img)}
+                className="break-inside-avoid cursor-pointer group relative overflow-hidden"
+              >
+                <img
+                  src={img}
+                  alt={`Gallery ${i + 1}`}
+                  className="w-full h-auto object-cover transition-all duration-500 group-hover:scale-105 group-hover:brightness-90"
+                />
+
+                {/* Overlay hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-center pb-4">
+                  {/* <svg
+                    className="w-8 h-8 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
+                    />
+                  </svg> */}
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
-
       {/* Page 12: Closing */}
       <section
         ref={(el) => (sectionRefs.current[11] = el)}
@@ -805,6 +870,39 @@ export const Pages5to12 = ({
           </div>
         </div>
       </section>
+
+      {selectedImage && (
+        <div
+          onClick={() => setSelectedImage(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 animate-fadeIn"
+        >
+          <button
+            onClick={() => setSelectedImage(null)}
+            className="absolute top-4 right-4 md:top-8 md:right-8 text-white/80 hover:text-white transition-colors z-10"
+          >
+            <svg
+              className="w-8 h-8 md:w-10 md:h-10"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+
+          <img
+            onClick={(e) => e.stopPropagation()}
+            src={selectedImage}
+            alt="Selected"
+            className="max-w-full max-h-full object-contain animate-scaleIn"
+          />
+        </div>
+      )}
     </div>
   );
 };
