@@ -129,6 +129,43 @@ const WeddingInvitation = () => {
     }
   }, [guestName]);
 
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        // Tab ditinggal
+        if (audioRef.current && !audioRef.current.paused) {
+          audioRef.current.pause();
+          setIsPlaying(false);
+        }
+      } else {
+        if (audioRef.current) {
+          audioRef.current
+            .play()
+            .then(() => setIsPlaying(true))
+            .catch(() => {
+              // autoplay mungkin diblokir (Safari / mobile)
+            });
+        }
+      }
+    };
+
+    const handleBlur = () => {
+      // Window kehilangan fokus (misalnya buka app lain)
+      if (audioRef.current && !audioRef.current.paused) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("blur", handleBlur);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("blur", handleBlur);
+    };
+  }, []);
+
   // ==========================================
   // PRELOAD ALL ASSETS
   // ==========================================
