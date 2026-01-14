@@ -40,26 +40,32 @@ export const Pages1to4 = ({
         </video>
         <div className="absolute inset-0 bg-black/40" />
       </div>
-      <div className="relative z-10 h-full flex flex-col items-center justify-center text-white text-center px-8 pb-52">
-        <p className="text-xs tracking-widest mb-4 opacity-80">
+      <div className="relative z-10 h-full flex flex-col items-center justify-center text-white text-center px-6 sm:px-8">
+        <p className="text-[10px] sm:text-xs tracking-[0.25em] mb-3 sm:mb-4 opacity-80">
           THE WEDDING OF
         </p>
-        <h1 className="text-4xl md:text-5xl mb-3" style={fontSerif}>
+
+        <h1
+          className="text-3xl sm:text-4xl md:text-5xl mb-4 sm:mb-5"
+          style={fontSerif}
+        >
           AINUN & FARHAN
         </h1>
+
         <p
-          className="text-4xl md:text-2xl tracking-widest mt-30 mb-10 opacity-80"
+          className="text-lg sm:text-xl md:text-2xl tracking-widest leading-relaxed sm:leading-loose mb-8 sm:mb-10 opacity-80"
           style={fontSerif}
         >
           TWO SOULS. <br />
-          ONE FEBRUARY. <br />A LIFETIME OF LOVE.{" "}
+          ONE FEBRUARY. <br />A LIFETIME OF LOVE.
         </p>
+
         <button
           onClick={goToNextPage}
-          className="w-6 h-6 border border-white/40 rounded-full flex items-center justify-center animate-bounce hover:bg-white/10"
+          className="w-7 h-7 sm:w-8 sm:h-8 border border-white/40 rounded-full flex items-center justify-center animate-bounce hover:bg-white/10"
         >
           <svg
-            className="w-2 h-2"
+            className="w-3 h-3"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -632,12 +638,20 @@ export const Pages5to12 = ({
         ref={(el) => (sectionRefs.current[10] = el)}
         className="h-screen w-full relative snap-start snap-always"
       >
-        {/* Background foto full - menutupi video */}
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-all duration-500"
-          style={{ backgroundImage: `url(${images.gallery[galleryIndex]})` }}
-        >
-          <div className="absolute inset-0 bg-black/30" />
+        {/* Background foto full - menutupi video dengan smooth transition */}
+        <div className="absolute inset-0">
+          {images.gallery.map((img, index) => (
+            <div
+              key={index}
+              className="absolute inset-0 bg-cover bg-center transition-opacity duration-700"
+              style={{
+                backgroundImage: `url(${img})`,
+                opacity: index === galleryIndex ? 1 : 0,
+              }}
+            >
+              <div className="absolute inset-0 bg-black/30" />
+            </div>
+          ))}
         </div>
         <div className="relative z-10 h-full flex flex-col justify-end text-white px-8 pb-16">
           <div className="flex items-center justify-between mb-4">
