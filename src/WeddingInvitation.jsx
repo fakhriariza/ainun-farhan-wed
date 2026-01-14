@@ -387,63 +387,63 @@ const WeddingInvitation = () => {
   // ==========================================
   // LOADING SCREEN
   // ==========================================
-  if (!assetsLoaded) {
-    return (
-      <div className="fixed inset-0 w-full h-full bg-black flex flex-col items-center justify-center z-50">
-        {/* Logo/Names */}
-        <div className="text-center mb-8">
-          <p className="text-xs tracking-widest mb-3 text-white/60">
-            THE WEDDING OF
-          </p>
-          <h1 className="text-3xl md:text-4xl text-white" style={fontSerif}>
-            AINUN & FARHAN
-          </h1>
-        </div>
+  // if (!assetsLoaded) {
+  //   return (
+  //     <div className="fixed inset-0 w-full h-full bg-black flex flex-col items-center justify-center z-50">
+  //       {/* Logo/Names */}
+  //       <div className="text-center mb-8">
+  //         <p className="text-xs tracking-widest mb-3 text-white/60">
+  //           THE WEDDING OF
+  //         </p>
+  //         <h1 className="text-3xl md:text-4xl text-white" style={fontSerif}>
+  //           AINUN & FARHAN
+  //         </h1>
+  //       </div>
 
-        {/* Loading Animation */}
-        <div className="w-48 mb-4">
-          {/* Progress Bar Background */}
-          <div className="h-0.5 bg-white/20 rounded-full overflow-hidden">
-            {/* Progress Bar Fill */}
-            <div
-              className="h-full bg-white/80 transition-all duration-300 ease-out"
-              style={{ width: `${loadingProgress}%` }}
-            />
-          </div>
-        </div>
+  //       {/* Loading Animation */}
+  //       <div className="w-48 mb-4">
+  //         {/* Progress Bar Background */}
+  //         <div className="h-0.5 bg-white/20 rounded-full overflow-hidden">
+  //           {/* Progress Bar Fill */}
+  //           <div
+  //             className="h-full bg-white/80 transition-all duration-300 ease-out"
+  //             style={{ width: `${loadingProgress}%` }}
+  //           />
+  //         </div>
+  //       </div>
 
-        {/* Loading Text */}
-        <p className="text-xs text-white/50 tracking-wider">
-          {loadingProgress < 100
-            ? `Loading ${loadingProgress}%`
-            : "Almost ready..."}
-        </p>
+  //       {/* Loading Text */}
+  //       <p className="text-xs text-white/50 tracking-wider">
+  //         {loadingProgress < 100
+  //           ? `Loading ${loadingProgress}%`
+  //           : "Almost ready..."}
+  //       </p>
 
-        <p className="text-xs tracking-widest mt-28 mb-3 text-white/60">
-          digital invitation by @doa.selamanya
-        </p>
+  //       <p className="text-xs tracking-widest mt-28 mb-3 text-white/60">
+  //         digital invitation by @doa.selamanya
+  //       </p>
 
-        {/* Decorative Element */}
-        <div className="absolute bottom-12 text-white/30">
-          <svg
-            className="w-6 h-6 animate-pulse"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={1}
-              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-            />
-          </svg>
-        </div>
+  //       {/* Decorative Element */}
+  //       <div className="absolute bottom-12 text-white/30">
+  //         <svg
+  //           className="w-6 h-6 animate-pulse"
+  //           fill="none"
+  //           stroke="currentColor"
+  //           viewBox="0 0 24 24"
+  //         >
+  //           <path
+  //             strokeLinecap="round"
+  //             strokeLinejoin="round"
+  //             strokeWidth={1}
+  //             d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+  //           />
+  //         </svg>
+  //       </div>
 
-        <style>{`@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');`}</style>
-      </div>
-    );
-  }
+  //       <style>{`@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');`}</style>
+  //     </div>
+  //   );
+  // }
 
   // ==========================================
   // OPENING COVER - dengan Guest Name
