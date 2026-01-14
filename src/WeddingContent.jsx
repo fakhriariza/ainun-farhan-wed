@@ -241,7 +241,7 @@ export const Pages5to12 = ({
   return (
     <div className="relative">
       {/* VIDEO BACKGROUND KONTINYU - Full Screen */}
-      <div className="absolute inset-0 w-full" style={{ height: "900vh" }}>
+      <div className="absolute inset-0 w-full" style={{ height: "1200vh" }}>
         <div className="sticky top-0 w-full h-screen overflow-hidden">
           <video
             autoPlay
