@@ -123,7 +123,7 @@ export const Pages1to4 = ({
       <div className="relative z-10 h-full flex flex-col justify-end text-white px-8 pb-24">
         <p className="text-xs tracking-widest mb-3 opacity-70">THE GROOM</p>
         <h2 className="text-3xl md:text-4xl mb-4" style={fontSerif}>
-          Farhan Taufiqul Hafidz, SH
+          Farhan Taufiqul Hafidz, S.H.
         </h2>
         <div className="flex items-center gap-4 mb-3">
           <p className="text-sm italic opacity-80">
@@ -167,7 +167,7 @@ export const Pages1to4 = ({
       <div className="relative z-10 h-full flex flex-col justify-end text-white px-8 pb-24">
         <p className="text-xs tracking-widest mb-3 opacity-70">THE BRIDE</p>
         <h2 className="text-3xl md:text-4xl mb-4" style={fontSerif}>
-          Ainun Sekar Arcturiani Putri, SH
+          Ainun Sekar Arcturiani Putri, S.H.
         </h2>
         <div className="flex items-center gap-4 mb-3">
           <p className="text-sm italic opacity-80">
@@ -273,7 +273,7 @@ export const Pages5to12 = ({
               },
               {
                 year: "Conflict",
-                text: "Pada tahun 2022 kami memutuskan untuk berpisah karena perbedaan pendapat dan komunikasi serta faktor LDR. Namun pada awal 2023 kami mencoba menjalani kembali hubungan.",
+                text: "Pada tahun 2022 kami memutuskan untuk berpisah karena masalah komunikasi serta faktor LDR. Namun pada awal 2023 kami mencoba menjalani kembali hubungan.",
               },
               {
                 year: "Engagement",
@@ -731,7 +731,7 @@ export const Pages5to12 = ({
 
               <div className="space-y-4">
                 <div className="border border-white/20 p-4">
-                  <p className="text-xs text-white/60 mb-1">Bank Jago</p>
+                  <p className="text-lg text-white/60 mb-1">Bank Jago</p>
                   <p className="text-white mb-1">
                     a.n. Ainun Sekar Arcturiani Putri
                   </p>
@@ -747,18 +747,50 @@ export const Pages5to12 = ({
                 </div>
 
                 <div className="border border-white/20 p-4">
-                  <p className="text-xs text-white/60 mb-1">
+                  <p className="text-lg text-white/60 mb-1">
                     Bank Negara Indonesia
                   </p>
                   <p className="text-white mb-1">a.n. Farhan Taufiqul Hafidz</p>
                   <div className="flex items-center justify-between">
-                    <p className="font-mono text-white">0452819195s</p>
+                    <p className="font-mono text-white">0452819195</p>
                     <button
-                      onClick={() => copyToClipboard("0452819195s", "bni")}
+                      onClick={() => copyToClipboard("0452819195", "bni")}
+                      className="text-xs text-white/60 hover:text-white transition-colors"
+                    >
+                      {copied === "bni" ? "✓ Copied!" : "Copy"}
+                    </button>
+                  </div>
+                </div>
+
+                <div className="border border-white/20 p-4">
+                  <p className="text-lg text-white/60 mb-1">Bank Mandiri</p>
+                  <p className="text-white mb-1">a.n. Farhan Taufiqul Hafi</p>
+                  <div className="flex items-center justify-between">
+                    <p className="font-mono text-white">1110019546668</p>
+                    <button
+                      onClick={() =>
+                        copyToClipboard("1110019546668", "mandiri")
+                      }
                       className="text-xs text-white/60 hover:text-white transition-colors"
                     >
                       {copied === "mandiri" ? "✓ Copied!" : "Copy"}
                     </button>
+                  </div>
+                </div>
+
+                <div className="border border-white/20 p-4">
+                  <p className="text-2xl text-white/60 mb-1">Send Gift</p>
+                  <p className="text-white mb-1">Wedding Gift Registry</p>
+                  <div className="flex items-center justify-between">
+                    {/* <p className="font-mono text-white">1110019546668</p>
+                    <button
+                      onClick={() =>
+                        copyToClipboard("1110019546668", "mandiri")
+                      }
+                      className="text-xs text-white/60 hover:text-white transition-colors"
+                    >
+                      {copied === "mandiri" ? "✓ Copied!" : "Copy"}
+                    </button> */}
                   </div>
                 </div>
 

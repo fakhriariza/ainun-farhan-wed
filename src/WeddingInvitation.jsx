@@ -36,14 +36,103 @@ const WeddingInvitation = () => {
   // "bakwan-ferizan-ginting" -> "Bakwan Ferizan Ginting"
   const getGuestName = (slug) => {
     if (!slug) return null;
-    return slug
-      .split("-")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-      .join(" ");
+
+    // Gelar yang formatnya utuh (tanpa pisah huruf)
+    const wholeTitles = [
+      "SH",
+      "MH",
+      "MKRIM",
+      "DR",
+      "AMD",
+      "SKOM",
+      "AK",
+      "STRHAN",
+      "STRIM",
+      "KOM",
+    ];
+
+    // Gelar yang dipisah per huruf di slug (s-h, m-h, dll)
+    const splitTitles = {
+      "s-h": "S.H.",
+      "m-h": "M.H.",
+      "a-md": "A.Md.",
+      "s-kom": "S.Kom",
+      "s-tr-han": "S.Tr.Han",
+      "s-tr-im": "S.Tr.Im",
+      "a-md-ak": "A.Md., Ak.",
+      "m-krim": "M.Krim.",
+    };
+
+    const words = slug.split("-");
+    const result = [];
+    let i = 0;
+
+    while (i < words.length) {
+      // Cek apakah 2-4 kata berikutnya adalah gelar terpisah
+      let found = false;
+
+      // Cek kombinasi 4 kata (s-tr-han, s-tr-im)
+      if (i + 3 < words.length) {
+        const combo4 = `${words[i]}-${words[i + 1]}-${words[i + 2]}-${
+          words[i + 3]
+        }`;
+        if (splitTitles[combo4]) {
+          result.push(splitTitles[combo4]);
+          i += 4;
+          found = true;
+          continue;
+        }
+      }
+
+      // Cek kombinasi 3 kata (a-md-ak)
+      if (i + 2 < words.length) {
+        const combo3 = `${words[i]}-${words[i + 1]}-${words[i + 2]}`;
+        if (splitTitles[combo3]) {
+          result.push(splitTitles[combo3]);
+          i += 3;
+          found = true;
+          continue;
+        }
+      }
+
+      // Cek kombinasi 2 kata (s-h, m-h, a-md, dll)
+      if (i + 1 < words.length) {
+        const combo2 = `${words[i]}-${words[i + 1]}`;
+        if (splitTitles[combo2]) {
+          result.push(splitTitles[combo2]);
+          i += 2;
+          found = true;
+          continue;
+        }
+      }
+
+      // Kalau bukan gelar, capitalize biasa
+      if (!found) {
+        const word = words[i];
+        const upperWord = word.toUpperCase();
+
+        // Cek gelar utuh
+        if (wholeTitles.includes(upperWord)) {
+          if (upperWord === "MKRIM") result.push("M.Krim.");
+          else if (upperWord === "STRHAN") result.push("S.Tr.Han");
+          else if (upperWord === "STRIM") result.push("S.Tr.Im");
+          else if (upperWord === "AMD") result.push("A.Md.");
+          else if (upperWord === "SKOM") result.push("S.Kom");
+          else if (upperWord === "AK") result.push("Ak.");
+          else result.push(upperWord.split("").join(".") + ".");
+        } else {
+          // Nama biasa
+          result.push(
+            word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+          );
+        }
+        i++;
+      }
+    }
+
+    return result.join(" ");
   };
-
   const guestName = getGuestName(slug);
-
   // States
   const [assetsLoaded, setAssetsLoaded] = useState(false); // Loading state
   const [loadingProgress, setLoadingProgress] = useState(0); // Progress 0-100
