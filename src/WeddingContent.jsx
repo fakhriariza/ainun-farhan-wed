@@ -781,17 +781,14 @@ export const Pages5to12 = ({
                 <div className="border border-white/20 p-4">
                   <p className="text-2xl text-white/60 mb-1">Send Gift</p>
                   <p className="text-white mb-1">Wedding Gift Registry</p>
-                  <div className="flex items-center justify-between">
-                    {/* <p className="font-mono text-white">1110019546668</p>
-                    <button
-                      onClick={() =>
-                        copyToClipboard("1110019546668", "mandiri")
-                      }
-                      className="text-xs text-white/60 hover:text-white transition-colors"
-                    >
-                      {copied === "mandiri" ? "✓ Copied!" : "Copy"}
-                    </button> */}
-                  </div>
+                  <a
+                    href="https://www.myregistry.com/giftlist/ainunfarhanwedding"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 block w-full text-center py-2 border border-white/40 text-white/80 hover:bg-white/10 hover:text-white transition-colors text-sm"
+                  >
+                    View Gift Registry →
+                  </a>
                 </div>
 
                 {/* <div className="border border-white/20 p-4">
