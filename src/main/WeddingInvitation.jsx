@@ -49,17 +49,7 @@ const WeddingInvitation = () => {
       "STRHAN",
       "STRIM",
       "KOM",
-      "SE",
-      "MM",
-      "SSIT",
-      "MMAR",
-      "E",
-      "PD",
-      "PSI",
-      "IR",
-      "DRA",
-      "HJ",
-      "H",
+      "DR",
     ];
 
     // Gelar yang dipisah per huruf di slug (s-h, m-h, dll)
@@ -73,16 +63,6 @@ const WeddingInvitation = () => {
       "a-md-ak": "A.Md., Ak.",
       "m-krim": "M.Krim.",
       "amd-kom": "A.Md. Kom",
-      "s-e": "S.E.",
-      "m-m": "M.M.",
-      "s-sit": "S.SiT",
-      "m-mar": "M.Mar.",
-      "m-pd": "M.Pd",
-      "s-pd": "S.Pd",
-      "s-psi": "S.Psi",
-      "i-r": "Ir.",
-      "dr-a": "Dra.",
-      "h-j": "Hj.",
     };
 
     const words = slug.split("-");
@@ -142,17 +122,6 @@ const WeddingInvitation = () => {
           else if (upperWord === "SKOM") result.push("S.Kom");
           else if (upperWord === "AK") result.push("Ak.");
           else if (upperWord === "DR") result.push("Dr.");
-          else if (upperWord === "SE") result.push("S.E.");
-          else if (upperWord === "MM") result.push("M.M.");
-          else if (upperWord === "SSIT") result.push("S.SiT");
-          else if (upperWord === "MMAR") result.push("M.Mar.");
-          else if (upperWord === "E") result.push("E");
-          else if (upperWord === "PD") result.push("Pd");
-          else if (upperWord === "PSI") result.push("Psi");
-          else if (upperWord === "IR") result.push("Ir.");
-          else if (upperWord === "DRA") result.push("Dra.");
-          else if (upperWord === "HJ") result.push("Hj.");
-          else if (upperWord === "H") result.push("H.");
           else result.push(upperWord.split("").join(".") + ".");
         } else {
           // Nama biasa
@@ -165,8 +134,8 @@ const WeddingInvitation = () => {
     }
 
     return result.join(" ");
-};
   };
+
   const guestName = getGuestName(slug);
   // States
   const [assetsLoaded, setAssetsLoaded] = useState(false); // Loading state
