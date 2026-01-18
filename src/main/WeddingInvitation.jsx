@@ -156,6 +156,7 @@ const WeddingInvitation = () => {
           else if (upperWord === "DRA") result.push("Dra.");
           else if (upperWord === "HJ") result.push("Hj.");
           else if (upperWord === "H") result.push("H.");
+          else if (upperWord === "BI") result.push("Bi");
           else result.push(upperWord.split("").join(".") + ".");
         } else {
           // Cek apakah ini inisial khusus (2 huruf besar semua)

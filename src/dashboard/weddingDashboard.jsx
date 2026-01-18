@@ -50,7 +50,7 @@ const WeddingRSVPDashboard = () => {
         console.error("Error fetching RSVP data:", err);
         setError(err.message);
         setLoading(false);
-      }
+      },
     );
 
     return () => unsubscribe();
@@ -120,10 +120,10 @@ const WeddingRSVPDashboard = () => {
     activeTab === "all"
       ? rsvpData
       : activeTab === "hadir"
-      ? stats.hadir
-      : activeTab === "tidak-hadir"
-      ? stats.tidakHadir
-      : stats.ragu;
+        ? stats.hadir
+        : activeTab === "tidak-hadir"
+          ? stats.tidakHadir
+          : stats.ragu;
 
   if (loading) {
     return (
@@ -226,10 +226,10 @@ const WeddingRSVPDashboard = () => {
               {activeTab === "all"
                 ? "Semua Konfirmasi"
                 : activeTab === "hadir"
-                ? "Daftar Hadir"
-                : activeTab === "tidak-hadir"
-                ? "Daftar Tidak Hadir"
-                : "Daftar Ragu-ragu"}
+                  ? "Daftar Hadir"
+                  : activeTab === "tidak-hadir"
+                    ? "Daftar Tidak Hadir"
+                    : "Daftar Ragu-ragu"}
             </h2>
             <p className="text-pink-100 mt-1 text-sm sm:text-base">
               {filteredData.length} konfirmasi
@@ -264,8 +264,8 @@ const WeddingRSVPDashboard = () => {
                               rsvp.attendance === "Hadir"
                                 ? "bg-green-100 text-green-800"
                                 : rsvp.attendance === "Tidak Hadir"
-                                ? "bg-red-100 text-red-800"
-                                : "bg-yellow-100 text-yellow-800"
+                                  ? "bg-red-100 text-red-800"
+                                  : "bg-yellow-100 text-yellow-800"
                             }`}
                           >
                             {rsvp.attendance}
@@ -337,8 +337,8 @@ const WeddingRSVPDashboard = () => {
                               rsvp.attendance === "Hadir"
                                 ? "bg-green-100 text-green-800"
                                 : rsvp.attendance === "Tidak Hadir"
-                                ? "bg-red-100 text-red-800"
-                                : "bg-yellow-100 text-yellow-800"
+                                  ? "bg-red-100 text-red-800"
+                                  : "bg-yellow-100 text-yellow-800"
                             }`}
                           >
                             {rsvp.attendance}
