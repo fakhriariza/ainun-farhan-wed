@@ -61,6 +61,7 @@ const WeddingInvitation = () => {
       "s-tr-im": "S.Tr.Im",
       "a-md-ak": "A.Md., Ak.",
       "m-krim": "M.Krim.",
+      "amd-kom": "A.Md. Kom",
     };
 
     const words = slug.split("-");
@@ -123,7 +124,7 @@ const WeddingInvitation = () => {
         } else {
           // Nama biasa
           result.push(
-            word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+            word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
           );
         }
         i++;
@@ -378,7 +379,7 @@ const WeddingInvitation = () => {
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
     sectionRefs.current.forEach((ref) => {
       if (ref) observer.observe(ref);
