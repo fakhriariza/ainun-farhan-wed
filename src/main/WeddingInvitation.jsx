@@ -1,30 +1,30 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { Pages1to4, Pages5to12 } from "./WeddingContent";
-import { addWish, addRSVP, subscribeToWishes } from "./firebase";
+import { addWish, addRSVP, subscribeToWishes } from "../firebase";
 
 // Assets
-import brides from "./assets/brides.jpeg";
-import grooms from "./assets/groom.jpg";
-import doa from "./assets/doa.jpeg";
-import cover from "./assets/cover.jpeg";
-import bgVideo from "./assets/bg_video.mp4";
-import story from "./assets/story.jpg";
-import coverDesktop from "./assets/cover-desktop.jpg";
-import weddingMusic from "./assets/wedding-music.mp3"; // Import musik
+import brides from "../assets/brides.jpeg";
+import grooms from "../assets/groom.jpg";
+import doa from "../assets/doa.jpeg";
+import cover from "../assets/cover.jpeg";
+import bgVideo from "../assets/bg_video.mp4";
+import story from "../assets/story.jpg";
+import coverDesktop from "../assets/cover-desktop.jpg";
+import weddingMusic from "../assets/wedding-music.mp3"; // Import musik
 
 //galery
-import gal1 from "./galery/gal1.jpg";
-import gal2 from "./galery/gal2.jpg";
-import gal3 from "./galery/gal3.jpeg";
-import gal4 from "./galery/gal4.jpg";
-import gal5 from "./galery/gal5.jpg";
-import gal6 from "./galery/gal6.jpg";
-import gal7 from "./galery/gal7.jpg";
-import gal8 from "./galery/gal8.jpg";
-import gal9 from "./galery/gal9.jpg";
-import gal10 from "./galery/gal10.jpg";
-import gal11 from "./galery/gal11.jpg";
+import gal1 from "../galery/gal1.jpg";
+import gal2 from "../galery/gal2.jpg";
+import gal3 from "../galery/gal3.jpeg";
+import gal4 from "../galery/gal4.jpg";
+import gal5 from "../galery/gal5.jpg";
+import gal6 from "../galery/gal6.jpg";
+import gal7 from "../galery/gal7.jpg";
+import gal8 from "../galery/gal8.jpg";
+import gal9 from "../galery/gal9.jpg";
+import gal10 from "../galery/gal10.jpg";
+import gal11 from "../galery/gal11.jpg";
 
 const WeddingInvitation = () => {
   // ==========================================
