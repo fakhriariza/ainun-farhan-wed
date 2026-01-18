@@ -60,6 +60,7 @@ const WeddingInvitation = () => {
       "DRA",
       "HJ",
       "H",
+      "CH",
     ];
 
     // Gelar yang dipisah per huruf di slug (s-h, m-h, dll)
@@ -157,13 +158,11 @@ const WeddingInvitation = () => {
           else if (upperWord === "HJ") result.push("Hj.");
           else if (upperWord === "H") result.push("H.");
           else if (upperWord === "BI") result.push("Bi");
+          else if (upperWord === "CH") result.push("CH");
           else result.push(upperWord.split("").join(".") + ".");
         } else {
           // Cek apakah ini inisial khusus (2 huruf besar semua)
           if (word.length <= 3 && specialInitials.includes(upperWord)) {
-            result.push(upperWord + ".");
-          } else if (word.length <= 2 && /^[A-Z]+$/.test(upperWord)) {
-            // Inisial umum 1-2 huruf
             result.push(upperWord + ".");
           } else {
             // Nama biasa
