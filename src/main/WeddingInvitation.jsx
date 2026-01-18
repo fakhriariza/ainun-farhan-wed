@@ -49,7 +49,17 @@ const WeddingInvitation = () => {
       "STRHAN",
       "STRIM",
       "KOM",
-      "DR",
+      "SE",
+      "MM",
+      "SSIT",
+      "MMAR",
+      "E",
+      "PD",
+      "PSI",
+      "IR",
+      "DRA",
+      "HJ",
+      "H",
     ];
 
     // Gelar yang dipisah per huruf di slug (s-h, m-h, dll)
@@ -63,7 +73,20 @@ const WeddingInvitation = () => {
       "a-md-ak": "A.Md., Ak.",
       "m-krim": "M.Krim.",
       "amd-kom": "A.Md. Kom",
+      "s-e": "S.E.",
+      "m-m": "M.M.",
+      "s-sit": "S.SiT",
+      "m-mar": "M.Mar.",
+      "m-pd": "M.Pd",
+      "s-pd": "S.Pd",
+      "s-psi": "S.Psi",
+      "i-r": "Ir.",
+      "dr-a": "Dra.",
+      "h-j": "Hj.",
     };
+
+    // Inisial khusus yang perlu huruf besar semua (seperti CH, dll)
+    const specialInitials = ["CH", "SH", "MH", "TH", "RH", "AH", "DH"];
 
     const words = slug.split("-");
     const result = [];
@@ -122,12 +145,31 @@ const WeddingInvitation = () => {
           else if (upperWord === "SKOM") result.push("S.Kom");
           else if (upperWord === "AK") result.push("Ak.");
           else if (upperWord === "DR") result.push("Dr.");
+          else if (upperWord === "SE") result.push("S.E.");
+          else if (upperWord === "MM") result.push("M.M.");
+          else if (upperWord === "SSIT") result.push("S.SiT");
+          else if (upperWord === "MMAR") result.push("M.Mar.");
+          else if (upperWord === "E") result.push("E");
+          else if (upperWord === "PD") result.push("Pd");
+          else if (upperWord === "PSI") result.push("Psi");
+          else if (upperWord === "IR") result.push("Ir.");
+          else if (upperWord === "DRA") result.push("Dra.");
+          else if (upperWord === "HJ") result.push("Hj.");
+          else if (upperWord === "H") result.push("H.");
           else result.push(upperWord.split("").join(".") + ".");
         } else {
-          // Nama biasa
-          result.push(
-            word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
-          );
+          // Cek apakah ini inisial khusus (2 huruf besar semua)
+          if (word.length <= 3 && specialInitials.includes(upperWord)) {
+            result.push(upperWord + ".");
+          } else if (word.length <= 2 && /^[A-Z]+$/.test(upperWord)) {
+            // Inisial umum 1-2 huruf
+            result.push(upperWord + ".");
+          } else {
+            // Nama biasa
+            result.push(
+              word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
+            );
+          }
         }
         i++;
       }
