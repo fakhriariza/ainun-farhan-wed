@@ -49,6 +49,7 @@ const WeddingInvitation = () => {
       "STRHAN",
       "STRIM",
       "KOM",
+      "DR",
     ];
 
     // Gelar yang dipisah per huruf di slug (s-h, m-h, dll)
@@ -120,6 +121,7 @@ const WeddingInvitation = () => {
           else if (upperWord === "AMD") result.push("A.Md.");
           else if (upperWord === "SKOM") result.push("S.Kom");
           else if (upperWord === "AK") result.push("Ak.");
+          else if (upperWord === "DR") result.push("Dr.");
           else result.push(upperWord.split("").join(".") + ".");
         } else {
           // Nama biasa
